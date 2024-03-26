@@ -9,8 +9,7 @@ class Enemigo:
   def enemigo():
   
    enemigo1 = pygame.image.load('myGame/imgs/mostruo1.png')
-   enemigosR=enemigo1.get_rect(center=(enemigo_x// 2, enemigo_y // 2))
- 
+   
    return enemigo1
   def enemigoR():
   

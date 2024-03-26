@@ -70,7 +70,7 @@ def mover_bolas_de_fuego(enemigos):
         for index, bola in enumerate(bolas_de_fuego):
             bolas_de_fuego[index] = (bola[0] + 5, bola[1])
 
-            if enemigos.collidepoint(bola[0], bola[1]):
+            if enemigos.collidepoint(bola[0]-50, bola[1]-30):
              
               return True  # Indicar que se ha detectado una colisión
               
