@@ -22,10 +22,7 @@ class Avatar:
 def mover(key):
 
         global avatar_x,velocidadx,avatar_y,velocidady
-
-       
-           
-        
+ 
         if key == pygame.K_LEFT:
                 velocidadx = -5
         elif key == pygame.K_RIGHT:
@@ -92,3 +89,9 @@ def limpiar():
   velocidady = 0
 
   return avatar_x,avatar_y,velocidadx,velocidady,bolas_de_fuego
+
+def perder(enemigos):
+      
+   if enemigos.collidepoint(avatar_x,avatar_y):
+         return True
+   return False

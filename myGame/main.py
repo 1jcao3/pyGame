@@ -1,5 +1,5 @@
 import pygame
-from vista import inicio, juego, niveles, gameWin
+from vista import inicio, juego, niveles, gameWin,gameLost
 from modelo import avatar, enemigo
 
 # Inicializar librería
@@ -44,6 +44,12 @@ while jugando:
         if evento.type == pygame.MOUSEBUTTONDOWN:
             if win_rect.collidepoint(evento.pos):
                 opcion_seleccionada = 'niveles'
+
+    elif opcion_seleccionada == 'gameLost':
+        win_rect = gameLost.GameLost.gameLost()  
+        if evento.type == pygame.MOUSEBUTTONDOWN:
+            if win_rect.collidepoint(evento.pos):
+                opcion_seleccionada = 'niveles'             
                 
     elif opcion_seleccionada == 'juego':
         
@@ -51,6 +57,7 @@ while jugando:
         if not juego_pausado:
             juego.Juego.juego(evento)
             colision = avatar.mover_bolas_de_fuego(enemigo.Enemigo.enemigoR())
+            colision2=avatar.perder(enemigo.Enemigo.enemigoR())
             if colision:
                 
                 juego_pausado = True
@@ -59,7 +66,14 @@ while jugando:
                 pygame.display.update()
                 avatar.limpiar()
                 enemigo.limpiar()
-                
+            if colision2 :    
+                juego_pausado = True
+                pygame.time.delay(1000)
+                opcion_seleccionada = "gameLost"
+                pygame.display.update()
+                avatar.limpiar()
+                enemigo.limpiar()
+
         avatar.mover_bolas_de_fuego(enemigo.Enemigo.enemigoR())
     
    
