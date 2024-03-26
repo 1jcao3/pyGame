@@ -69,16 +69,11 @@ def lanzar():
 def mover_bolas_de_fuego(enemigos):
         for index, bola in enumerate(bolas_de_fuego):
             bolas_de_fuego[index] = (bola[0] + 5, bola[1])
-            
-            
-            enemigoFoto,enemigosR=enemigos
-            
-            for enemigo_rect in enemigosR:
+
+            if enemigos.collidepoint(bola[0], bola[1]):
              
-             if enemigo_rect.collidepoint(bola[0], bola[1]):
-
-
               return True  # Indicar que se ha detectado una colisión
+              
         return False  # Indicar que no se ha detectado ninguna colisión
 
          
@@ -88,4 +83,12 @@ def dibujar_bolas_de_fuego():
          
       Constantes.ventana.blit(fuegos,bola)
 
+def limpiar():
+  global avatar_x,velocidadx,avatar_y,velocidady,bolas_de_fuego
+  bolas_de_fuego = []
+  avatar_x = 100
+  avatar_y = 100
+  velocidadx = 0
+  velocidady = 0
 
+  return avatar_x,avatar_y,velocidadx,velocidady,bolas_de_fuego

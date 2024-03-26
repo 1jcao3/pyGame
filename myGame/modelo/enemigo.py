@@ -10,9 +10,14 @@ class Enemigo:
   
    enemigo1 = pygame.image.load('myGame/imgs/mostruo1.png')
    enemigosR=enemigo1.get_rect(center=(enemigo_x// 2, enemigo_y // 2))
-   enemigos=[enemigo1]
-   enemigosRR=[enemigosR]
-   return enemigos,enemigosRR
+ 
+   return enemigo1
+  def enemigoR():
+  
+   enemigo1 = pygame.image.load('myGame/imgs/mostruo1.png')
+   enemigosR=enemigo1.get_rect(center=(enemigo_x, enemigo_y ))
+ 
+   return enemigosR
   
 def mover():
     global enemigo_x,enemigo_y
@@ -26,3 +31,9 @@ def mover():
      enemigo_y -= vel_enemigo
 
     return enemigo_x,enemigo_y
+def limpiar():
+  global enemigo_x,enemigo_y,vel_enemigo
+  enemigo_x = 600  # Posición inicial del muñeco enemigo
+  enemigo_y = 400  # Posición inicial del muñeco enemigo  
+  vel_enemigo = 1
+  return enemigo_x,enemigo_y,vel_enemigo

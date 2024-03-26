@@ -12,6 +12,7 @@ win_rect = gameWin.GameWin.gameWin()
 juego_pausado = False
 
 while jugando:
+    
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             jugando = False
@@ -31,27 +32,37 @@ while jugando:
         niveles.Niveles.niveles()
         uno, dos = niveles.Niveles.niveles()
         if evento.type == pygame.MOUSEBUTTONDOWN:
+            juego_pausado=False
             if uno.collidepoint(evento.pos):
                 opcion_seleccionada = 'juego'
             elif dos.collidepoint(evento.pos):
                 opcion_seleccionada = 'juego'
 
-    elif opcion_seleccionada == 'juego':
-        if not juego_pausado:
-            juego.Juego.juego(evento)
-            colision = avatar.mover_bolas_de_fuego(enemigo.Enemigo.enemigo())
-            if colision:
-                juego_pausado = True
-                opcion_seleccionada = "gameWin"
-
-        avatar.mover_bolas_de_fuego(enemigo.Enemigo.enemigo())
-
+               
     elif opcion_seleccionada == 'gameWin':
         win_rect = gameWin.GameWin.gameWin()  
         if evento.type == pygame.MOUSEBUTTONDOWN:
             if win_rect.collidepoint(evento.pos):
                 opcion_seleccionada = 'niveles'
-               
+                
+    elif opcion_seleccionada == 'juego':
+        
+        
+        if not juego_pausado:
+            juego.Juego.juego(evento)
+            colision = avatar.mover_bolas_de_fuego(enemigo.Enemigo.enemigoR())
+            if colision:
+                
+                juego_pausado = True
+                pygame.time.delay(1000)
+                opcion_seleccionada = "gameWin"
+                pygame.display.update()
+                avatar.limpiar()
+                enemigo.limpiar()
+                
+        avatar.mover_bolas_de_fuego(enemigo.Enemigo.enemigoR())
+    
+   
 
 # Salir del juego
 pygame.quit()

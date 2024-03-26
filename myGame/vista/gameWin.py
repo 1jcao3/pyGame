@@ -10,6 +10,8 @@ class GameWin:
     Constantes.ventana.blit(titulo, (310, 280))
     opcion = Constantes.fuente2.render('volver a jugar', True, Constantes.VERDE)
     opcionR = opcion.get_rect(center=(Constantes.ANCHO // 2, Constantes.ALTO // 2))
-    Constantes.ventana.blit(opcion, opcionR.topleft)
+    opcionR.width = opcion.get_width()
+    opcionR.height = opcion.get_height()
+    Constantes.ventana.blit(opcion, opcionR)
     pygame.display.update()
     return opcionR
