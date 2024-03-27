@@ -8,11 +8,12 @@ pygame.init()
 jugando = True
 opcion_seleccionada = None
 inicio_rect = inicio.Inicio.inicio()
-win_rect = gameWin.GameWin.gameWin()
+
 juego_pausado = False
 
 while jugando:
-    
+    if opcion_seleccionada is None:
+     inicio.Inicio.inicio()   
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             jugando = False
